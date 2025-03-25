@@ -1,6 +1,7 @@
 package com.example.aisin;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -27,11 +28,19 @@ public class SplashScreen extends AppCompatActivity {
         runnable = new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashScreen.this, LoginActivity.class);
-                startActivity(intent);
+                SharedPreferences sharedPreferences = getSharedPreferences("user_session", MODE_PRIVATE);
+                boolean isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false);
+
+                if (isLoggedIn) {
+                    startActivity(new Intent(SplashScreen.this, MainActivity.class));
+                } else {
+                    startActivity(new Intent(SplashScreen.this, LoginActivity.class));
+                }
+
                 finish();
             }
         };
+
         handler.postDelayed(runnable, 3000);
     }
 
