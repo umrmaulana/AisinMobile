@@ -1,29 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-=======
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
->>>>>>> a57a957 (menampilkan data dari inventory sampai receiving)
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< HEAD
-    tools:context=".InventoryActivity"
-    android:background="@color/primary">
-
-    <include
-        layout="@layout/appbar"
-        android:id="@+id/header" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineCenter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintGuidePercent="0.5" />
-=======
     tools:context=".inventory.InventoryActivity"
     android:background="@color/primary">
 
@@ -36,23 +18,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
->>>>>>> a57a957 (menampilkan data dari inventory sampai receiving)
 
     <ImageButton
         android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-<<<<<<< HEAD
-        android:layout_marginTop="16dp"
-        android:background="@android:color/transparent"
-        android:src="@drawable/arrow"
-        android:tint="@color/white"
-        android:rotation="180"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header"
-        app:layout_constraintEnd_toStartOf="@id/headerTitle" />
-=======
         android:layout_marginTop="20dp"
         android:background="@android:color/transparent"
         android:src="@drawable/arrow"
@@ -130,30 +101,15 @@
                 android:contentDescription="Arrow icon" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
->>>>>>> a57a957 (menampilkan data dari inventory sampai receiving)
 
     <TextView
         android:id="@+id/headerTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
-        android:layout_marginTop="216dp"
-        android:gravity="center"
-        android:text="Inventory Manager"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        app:layout_constraintBaseline_toBaselineOf="@id/backButton"
-        app:layout_constraintEnd_toStartOf="@id/guidelineCenter"
-        app:layout_constraintStart_toEndOf="@id/backButton"
-        app:layout_constraintTop_toBottomOf="@id/header" />
-
-=======
         android:visibility="gone"
         android:text="Inventory Manager"
         android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
->>>>>>> a57a957 (menampilkan data dari inventory sampai receiving)
-
 </androidx.constraintlayout.widget.ConstraintLayout>
