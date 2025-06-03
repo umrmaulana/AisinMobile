@@ -1,0 +1,76 @@
+package com.example.aisin.receiving;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+import com.example.aisin.Api.ApiHelper;
+import com.example.aisin.R;
+
+public class ReceivingActivity extends AppCompatActivity {
+    private CardView cardUploadReceiving, cardReceivingHistory;
+    private ImageButton backButton;
+    private TextView userNameTextView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_receiving);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+        
+        // Initialize views
+        initViews();
+        
+        // Set up click listeners
+        setupClickListeners();
+        
+        // Display username from SharedPreferences
+        displayUsername();
+    }
+    
+    private void initViews() {
+        cardUploadReceiving = findViewById(R.id.cardUploadReceiving);
+        cardReceivingHistory = findViewById(R.id.cardReceivingHistory);
+        backButton = findViewById(R.id.backButton);
+        userNameTextView = findViewById(R.id.userName);
+    }
+    
+    private void setupClickListeners() {
+        // Back button
+        backButton.setOnClickListener(v -> finish());
+        
+        // Navigate to Receiving History
+        cardReceivingHistory.setOnClickListener(v -> {
+            Intent intent = new Intent(ReceivingActivity.this, ReceivingHistory.class);
+            startActivity(intent);
+        });
+        
+        // Handle Upload Receiving
+        cardUploadReceiving.setOnClickListener(v -> {
+            // This would navigate to an Upload Receiving screen
+            Toast.makeText(ReceivingActivity.this, "Upload Receiving feature coming soon", Toast.LENGTH_SHORT).show();
+        });
+    }
+    
+    private void displayUsername() {
+        if (userNameTextView != null) {
+            String username = ApiHelper.getUsername(this);
+            userNameTextView.setText(username);
+        }
+    }
+}

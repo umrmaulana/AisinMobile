@@ -8,7 +8,11 @@ android {
 
     defaultConfig {
         applicationId = "com.example.aisin"
+<<<<<<< HEAD
         minSdk = 34
+=======
+        minSdk = 27
+>>>>>>> a57a957 (menampilkan data dari inventory sampai receiving)
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
@@ -50,4 +54,9 @@ dependencies {
     annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
 
     implementation ("com.android.volley:volley:1.2.1")
+<<<<<<< HEAD
+=======
+
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+>>>>>>> a57a957 (menampilkan data dari inventory sampai receiving)
 }
