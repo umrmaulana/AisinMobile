@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="2dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- Part Number -->
+        <TextView
+            android:id="@+id/tvPartNumberLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Part Number"
+            android:textColor="#757575"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvPartNumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="#212121"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvPartNumberLabel"
+            tools:text="17120-BZ121-00" />
+
+        <LinearLayout
+            android:id="@+id/qtyContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="#F5F5F5"
+            android:orientation="horizontal"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvPartNumber">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quantity: "
+                android:textColor="#757575"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/primary"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:text="10 units" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvItemSequence"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@color/primary"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvPartNumber"
+            tools:text="1" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

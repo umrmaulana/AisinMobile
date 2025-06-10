@@ -1,6 +1,7 @@
 package com.example.aisin.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.aisin.R;
 import com.example.aisin.model.OrderModel;
+import com.example.aisin.order.OrderDetailActivity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -71,6 +73,13 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
         if (holder.tvStatus != null) {
             holder.tvStatus.setVisibility(View.GONE);
         }
+
+        // Set click listener to open detail page
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, OrderDetailActivity.class);
+            intent.putExtra("order_number", order.getNo_po());
+            context.startActivity(intent);
+        });
     }
     
     @Override
