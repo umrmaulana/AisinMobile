@@ -89,6 +89,8 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        cardMetrics = findViewById(R.id.cardProduction);
+
         cardMetrics.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, ProductionHistory.class);
             startActivity(intent);
