@@ -137,10 +137,12 @@ public class ApiHelper {
                             editor.putString("token", token);
                             editor.putBoolean("isLoggedIn", true);
                             
-                            // Save username from response if available
+                            // Save username and role from response if available
                             if (response.has("user")) {
                                 try {
                                     JSONObject user = response.getJSONObject("user");
+                                    
+                                    // Save username
                                     if (user.has("name")) {
                                         editor.putString("username", user.getString("name"));
                                     } else if (user.has("username")) {
@@ -148,11 +150,37 @@ public class ApiHelper {
                                     } else {
                                         editor.putString("username", email.split("@")[0]); // Default to email username part
                                     }
+                                    
+                                    // Extract and save user role - ADMIN or RECEIVING
+                                    String role = "RECEIVING"; // Default role
+                                    
+                                    if (user.has("role")) {
+                                        role = user.getString("role").toUpperCase();
+                                    } else if (user.has("type")) {
+                                        role = user.getString("type").toUpperCase();
+                                    } else if (user.has("user_type")) {
+                                        role = user.getString("user_type").toUpperCase();
+                                    } else if (user.has("user_role")) {
+                                        role = user.getString("user_role").toUpperCase();
+                                    }
+                                    
+                                    // Ensure role is either ADMIN or RECEIVING
+                                    if (!role.equals("ADMIN")) {
+                                        role = "RECEIVING"; // Default to RECEIVING for any non-admin role
+                                    }
+                                    
+                                    editor.putString("role", role);
+                                    Log.d(TAG, "User role saved: " + role);
+                                    
                                 } catch (JSONException e) {
-                                    editor.putString("username", "admin"); // Fallback
+                                    editor.putString("username", "User"); // Fallback
+                                    editor.putString("role", "RECEIVING"); // Default role
+                                    Log.e(TAG, "Error parsing user data", e);
                                 }
                             } else {
-                                editor.putString("username", "admin"); // Default value
+                                editor.putString("username", "User"); // Default value
+                                editor.putString("role", "RECEIVING"); // Default role
+                                Log.d(TAG, "No user object in response, setting default role: RECEIVING");
                             }
                             
                             editor.apply();

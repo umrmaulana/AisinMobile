@@ -3,6 +3,7 @@ package com.example.aisin;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,9 +20,13 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 import com.example.aisin.Api.AuthHelper;
 import com.example.aisin.inventory.InventoryActivity;
+import com.example.aisin.inventory.InventoryMonitor;
 import com.example.aisin.order.OrderActivity;
+import com.example.aisin.order.OrderHistory;
 import com.example.aisin.production.ProductionActivity;
+import com.example.aisin.production.ProductionHistory;
 import com.example.aisin.receiving.ReceivingActivity;
+import com.example.aisin.receiving.ReceivingHistory;
 
 public class MainActivity extends AppCompatActivity {
     private RequestQueue requestQueue;
@@ -67,26 +72,32 @@ public class MainActivity extends AppCompatActivity {
         loadUserData();
 
         cardInventory = findViewById(R.id.cardInventory);
+        cardOrder = findViewById(R.id.cardOrder);
+        cardMetrics = findViewById(R.id.cardMetrics);
+        cardReceiving = findViewById(R.id.cardReceiving);
+
+        // Show/hide cards based on role
+        setMenuVisibility();
+
         cardInventory.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, InventoryActivity.class);
+            Intent intent = new Intent(MainActivity.this, InventoryMonitor.class);
             startActivity(intent);
         });
 
-        cardOrder = findViewById(R.id.cardOrder);
         cardOrder.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, OrderActivity.class);
+            Intent intent = new Intent(MainActivity.this, OrderHistory.class);
             startActivity(intent);
         });
 
         cardMetrics = findViewById(R.id.cardProduction);
+
         cardMetrics.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, ProductionActivity.class);
+            Intent intent = new Intent(MainActivity.this, ProductionHistory.class);
             startActivity(intent);
         });
 
-        cardReceiving = findViewById(R.id.cardReceiving);
         cardReceiving.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, ReceivingActivity.class);
+            Intent intent = new Intent(MainActivity.this, ReceivingHistory  .class);
             startActivity(intent);
         });
 
@@ -138,12 +149,45 @@ public class MainActivity extends AppCompatActivity {
             // Reload user data
             loadUserData();
 
+            // Update menu visibility after refresh
+            setMenuVisibility();
+
             // Hide refresh indicator
             swipeRefreshLayout.setRefreshing(false);
             
             // Show refresh confirmation
             Toast.makeText(MainActivity.this, "Data refreshed", Toast.LENGTH_SHORT).show();
         }, 1000); // 1 second delay
+    }
+
+    // Add this method to control menu visibility
+    private void setMenuVisibility() {
+        SharedPreferences sharedPreferences = getSharedPreferences("user_session", MODE_PRIVATE);
+        String role = sharedPreferences.getString("role", ""); // default empty
+        
+        // Add debug log to see what role we're getting
+        Log.d("MainActivity", "Current user role: " + role);
+
+        if ("RECEIVING".equalsIgnoreCase(role)) {
+            cardInventory.setVisibility(android.view.View.GONE);
+            cardOrder.setVisibility(android.view.View.GONE);
+            cardMetrics.setVisibility(android.view.View.GONE);
+            cardReceiving.setVisibility(android.view.View.VISIBLE);
+            Log.d("MainActivity", "Setting visibility for RECEIVING role");
+        } else if ("ADMIN".equalsIgnoreCase(role)) {
+            cardInventory.setVisibility(android.view.View.VISIBLE);
+            cardOrder.setVisibility(android.view.View.VISIBLE);
+            cardMetrics.setVisibility(android.view.View.VISIBLE);
+            cardReceiving.setVisibility(android.view.View.VISIBLE);
+            Log.d("MainActivity", "Setting visibility for ADMIN role");
+        } else {
+            // Default: hide all except receiving
+            cardInventory.setVisibility(android.view.View.GONE);
+            cardOrder.setVisibility(android.view.View.GONE);
+            cardMetrics.setVisibility(android.view.View.GONE);
+            cardReceiving.setVisibility(android.view.View.VISIBLE);
+            Log.d("MainActivity", "Setting default visibility, role not recognized: '" + role + "'");
+        }
     }
 
     public void logout() {

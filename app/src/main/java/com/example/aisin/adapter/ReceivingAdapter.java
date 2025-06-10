@@ -1,6 +1,7 @@
 package com.example.aisin.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.aisin.R;
 import com.example.aisin.model.ReceivingModel;
+import com.example.aisin.receiving.ReceivingDetailActivity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -77,6 +79,13 @@ public class ReceivingAdapter extends RecyclerView.Adapter<ReceivingAdapter.Rece
             holder.tvStatus.setText("Received");
             holder.tvStatus.setTextColor(context.getResources().getColor(R.color.green));
         }
+
+        // Set click listener to open detail page
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, ReceivingDetailActivity.class);
+            intent.putExtra("pkb_number", receiving.getNo_pkb());
+            context.startActivity(intent);
+        });
     }
     
     @Override

@@ -56,6 +56,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".order.OrderDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".receiving.ReceivingDetailActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

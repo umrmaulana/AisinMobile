@@ -124,6 +124,11 @@ public class LoginActivity extends AppCompatActivity {
                 SharedPreferences sharedPreferences = getSharedPreferences("user_session", MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putLong("last_login_time", System.currentTimeMillis());
+                
+                // Example: Assume ApiHelper saves user role in SharedPreferences
+                // If not, you need to parse the role from the login response and save it here.
+                // e.g., editor.putString("role", userRole);
+                
                 editor.apply();
                 
                 // Show success message and navigate to MainActivity
