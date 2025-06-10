@@ -2,11 +2,6 @@ package com.example.aisin.Api;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-<<<<<<< HEAD
-
-public class ApiHelper {
-    public static final String BASE_URL = "https://f86f-36-72-254-201.ngrok-free.app/api/";
-=======
 import android.util.Log;
 import android.widget.Toast;
 
@@ -38,7 +33,6 @@ import javax.net.ssl.X509TrustManager;
 public class ApiHelper {
     private static final String TAG = "ApiHelper";
     public static final String BASE_URL = "https://aisin.umrmaulana.my.id/api/";
->>>>>>> a57a957 (menampilkan data dari inventory sampai receiving)
     public static final String LOGIN = BASE_URL + "login";
     public static final String REGISTER = BASE_URL + "register";
     public static final String USERS = BASE_URL + "users";
@@ -49,9 +43,6 @@ public class ApiHelper {
         SharedPreferences sharedPreferences = context.getSharedPreferences("user_session", Context.MODE_PRIVATE);
         return sharedPreferences.getString("token", null);
     }
-<<<<<<< HEAD
-}
-=======
     
     // Check if user is logged in
     public static boolean isLoggedIn(Context context) {
@@ -273,4 +264,3 @@ public class ApiHelper {
         void onSuccess();
     }
 }
->>>>>>> a57a957 (menampilkan data dari inventory sampai receiving)

@@ -4,8 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="primary">#2567E8</color>
     <color name="secondary">#FF0000FF</color>
-<<<<<<< HEAD
-=======
     <color name="green">#5A9015</color>
->>>>>>> a57a957 (menampilkan data dari inventory sampai receiving)
 </resources>

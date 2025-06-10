@@ -84,9 +84,4 @@ public class AuthHelper {
 
         requestQueue.add(request);
     }
-
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> a57a957 (menampilkan data dari inventory sampai receiving)

@@ -5,10 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
-<<<<<<< HEAD
-=======
 import android.widget.Toast;
->>>>>>> a57a957 (menampilkan data dari inventory sampai receiving)
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,33 +13,24 @@ import androidx.cardview.widget.CardView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-<<<<<<< HEAD
-=======
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
->>>>>>> a57a957 (menampilkan data dari inventory sampai receiving)
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 import com.example.aisin.Api.AuthHelper;
-<<<<<<< HEAD
-=======
 import com.example.aisin.inventory.InventoryActivity;
 import com.example.aisin.order.OrderActivity;
 import com.example.aisin.production.ProductionActivity;
 import com.example.aisin.receiving.ReceivingActivity;
->>>>>>> a57a957 (menampilkan data dari inventory sampai receiving)
 
 public class MainActivity extends AppCompatActivity {
     private RequestQueue requestQueue;
     Button btnLogout;
     TextView userNameTextView;
     CardView cardInventory, cardOrder, cardMetrics, cardReceiving;
-<<<<<<< HEAD
-=======
     SwipeRefreshLayout swipeRefreshLayout;
     private long lastLoginTimestamp = 0;
     private static final String PREF_LAST_LOGIN_TIME = "last_login_time";
->>>>>>> a57a957 (menampilkan data dari inventory sampai receiving)
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +44,6 @@ public class MainActivity extends AppCompatActivity {
         });
         requestQueue = Volley.newRequestQueue(this);
 
-<<<<<<< HEAD
-=======
         // Get the last stored login timestamp
         SharedPreferences sharedPreferences = getSharedPreferences("user_session", MODE_PRIVATE);
         lastLoginTimestamp = sharedPreferences.getLong(PREF_LAST_LOGIN_TIME, 0);
@@ -73,22 +59,12 @@ public class MainActivity extends AppCompatActivity {
 
         swipeRefreshLayout.setOnRefreshListener(this::refreshData);
 
->>>>>>> a57a957 (menampilkan data dari inventory sampai receiving)
         AuthHelper authHelper = new AuthHelper(this);
         authHelper.validateToken();
         userNameTextView = findViewById(R.id.userName);
 
-<<<<<<< HEAD
-        // Ambil username dari SharedPreferences
-        SharedPreferences sharedPreferences = getSharedPreferences("user_session", MODE_PRIVATE);
-        String username = sharedPreferences.getString("username", "Guest");
-
-        // Tampilkan di TextView
-        userNameTextView.setText(username);
-=======
         // Load user data
         loadUserData();
->>>>>>> a57a957 (menampilkan data dari inventory sampai receiving)
 
         cardInventory = findViewById(R.id.cardInventory);
         cardInventory.setOnClickListener(v -> {
@@ -104,11 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
         cardMetrics = findViewById(R.id.cardMetrics);
         cardMetrics.setOnClickListener(v -> {
-<<<<<<< HEAD
-            Intent intent = new Intent(MainActivity.this, MetricsActivity.class);
-=======
             Intent intent = new Intent(MainActivity.this, ProductionActivity.class);
->>>>>>> a57a957 (menampilkan data dari inventory sampai receiving)
             startActivity(intent);
         });
 
@@ -122,8 +94,6 @@ public class MainActivity extends AppCompatActivity {
         btnLogout.setOnClickListener(v -> logout());
     }
 
-<<<<<<< HEAD
-=======
     @Override
     protected void onResume() {
         super.onResume();
@@ -176,7 +146,6 @@ public class MainActivity extends AppCompatActivity {
         }, 1000); // 1 second delay
     }
 
->>>>>>> a57a957 (menampilkan data dari inventory sampai receiving)
     public void logout() {
         SharedPreferences sharedPreferences = getSharedPreferences("user_session", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -187,8 +156,4 @@ public class MainActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> a57a957 (menampilkan data dari inventory sampai receiving)

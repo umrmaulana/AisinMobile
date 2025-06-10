@@ -3,10 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
-<<<<<<< HEAD
-=======
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
->>>>>>> a57a957 (menampilkan data dari inventory sampai receiving)
 
     <application
         android:allowBackup="true"
@@ -17,24 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Aisin"
-<<<<<<< HEAD
-        tools:targetApi="31">
-        <activity
-            android:name=".ReceivingActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MetricsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".OrderActivity"
-            android:exported="false" />
-        <activity
-            android:name=".InventoryActivity"
-=======
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-        <!-- activities remain unchanged -->
-
+        
         <activity
             android:name=".receiving.ReceivingHistory"
             android:exported="false" />
@@ -58,7 +40,6 @@
             android:exported="false" />
         <activity
             android:name=".inventory.InventoryActivity"
->>>>>>> a57a957 (menampilkan data dari inventory sampai receiving)
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
@@ -77,8 +58,4 @@
         </activity>
     </application>
 
-<<<<<<< HEAD
 </manifest>
-=======
-</manifest>
->>>>>>> a57a957 (menampilkan data dari inventory sampai receiving)

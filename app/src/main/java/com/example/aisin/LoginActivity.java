@@ -1,10 +1,5 @@
 package com.example.aisin;
 
-<<<<<<< HEAD
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-=======
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,7 +7,6 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
->>>>>>> a57a957 (menampilkan data dari inventory sampai receiving)
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,26 +18,6 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-<<<<<<< HEAD
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
-import com.example.aisin.Api.ApiHelper;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
-
-public class LoginActivity extends AppCompatActivity {
-    EditText email, password;
-    Button loginButton;
-    RequestQueue requestQueue;
-=======
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 import com.example.aisin.Api.ApiHelper;
@@ -54,7 +28,6 @@ public class LoginActivity extends AppCompatActivity {
     Button loginButton;
     RequestQueue requestQueue;
     private ProgressDialog progressDialog;
->>>>>>> a57a957 (menampilkan data dari inventory sampai receiving)
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,17 +39,12 @@ public class LoginActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-<<<<<<< HEAD
-=======
         
         // Initialize UI components
->>>>>>> a57a957 (menampilkan data dari inventory sampai receiving)
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         loginButton = findViewById(R.id.btnLogin);
         requestQueue = Volley.newRequestQueue(this);
-<<<<<<< HEAD
-=======
         
         // Setup the progress dialog
         progressDialog = new ProgressDialog(this);
@@ -89,7 +57,6 @@ public class LoginActivity extends AppCompatActivity {
             finish();
             return;
         }
->>>>>>> a57a957 (menampilkan data dari inventory sampai receiving)
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,52 +66,6 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-<<<<<<< HEAD
-    private void login() {
-        JSONObject requestData = new JSONObject();
-        try {
-            requestData.put("email", email.getText().toString());
-            requestData.put("password", password.getText().toString());
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, ApiHelper.LOGIN, requestData,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            // Ambil token dari respons API
-                            String token = response.getString("token");
-
-                            // Simpan token dan data pengguna ke SharedPreferences
-                            SharedPreferences sharedPreferences = getSharedPreferences("user_session", MODE_PRIVATE);
-                            SharedPreferences.Editor editor = sharedPreferences.edit();
-                            editor.putString("token", token);
-                            editor.putBoolean("isLoggedIn", true); // Tandai bahwa pengguna sudah login
-                            editor.apply();
-
-                            // Pindah ke MainActivity
-                            Toast.makeText(LoginActivity.this, "Login Berhasil", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                            finish(); // Tutup LoginActivity agar tidak bisa kembali ke halaman login
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            Toast.makeText(LoginActivity.this, "Gagal memproses respons", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(LoginActivity.this, "Login Gagal", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-        requestQueue.add(request);
-    }
-}
-=======
     private boolean validateInput() {
         boolean isValid = true;
         String emailInput = email.getText().toString().trim();
@@ -225,4 +146,3 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 }
->>>>>>> a57a957 (menampilkan data dari inventory sampai receiving)
